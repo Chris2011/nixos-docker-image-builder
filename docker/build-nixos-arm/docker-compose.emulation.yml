@@ -10,7 +10,7 @@ services:
   setup-qemu:
     image: qemu-handler
     build:
-      context: setup-qemu
+      context: ./setup-qemu
       args:
         # Uncomment the following to use a specific version of QEMU rather than the latest.
         #QEMU_PKG_URL: "http://ftp.debian.org/debian/pool/main/q/qemu/qemu-user-static_5.0-4_amd64.deb"
@@ -18,10 +18,10 @@ services:
         IMAGE_BASE: $IMAGE_BASE
     privileged: true
   # Main container, requires no elevated privileges to run. Builds NixOS.
-  build-nixos:
+  build-nixos-arm:
     depends_on:
       - setup-qemu
-  # Cleanup. Waits until `build-nixos` is done via a TCP socket, then cleans up any `binfmt_misc`
+  # Cleanup. Waits until `build-nixos-arm` is done via a TCP socket, then cleans up any `binfmt_misc`
   # handler registered to QEMU.
   cleanup-qemu:
     image: qemu-handler
@@ -29,4 +29,4 @@ services:
       QEMU_CLEANUP: "y"
     privileged: true
     depends_on:
-      - build-nixos
+      - build-nixos-arm

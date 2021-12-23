@@ -1,16 +1,25 @@
-{ lib, ... }: {
+{ lib, pkgs, ... }:
+let
+  myPackage = pkgs.callPackage ./echo.nix {};
+in
+ {
   imports = [
     ## Uncomment at most one of the following to select the target system:
     # ./generic-aarch64 # (note: this is the same as 'rpi3')
     # ./rpi4
     ./rpi3
+    # ./piguard/configuration.nix
+  ];
+
+  environment.systemPackages = with pkgs; [
+    myPackage
   ];
 
   # The installer starts with a "nixos" user to allow installation, so add the SSH key to
   # that user. Note that the key is, at the time of writing, put in `/etc/ssh/authorized_keys.d`
-  users.extraUsers.nixos.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 ..."
-  ];
+  # users.extraUsers.nixos.openssh.authorizedKeys.keys = [
+    # "ssh-ed25519 ..."
+  # ];
 
   # bzip2 compression takes loads of time with emulation, skip it. Enable this if you're low
   # on space.
@@ -23,6 +32,8 @@
 
   # Enable OpenSSH out of the box.
   services.sshd.enable = true;
+
+  installer.cloneConfig = true;
 
   # Wireless networking (1). You might want to enable this if your Pi is not attached via Ethernet.
   #networking.wireless = {
