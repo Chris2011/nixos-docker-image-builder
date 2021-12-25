@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -u
 
 buildForPc() {
@@ -74,7 +74,7 @@ if [ -n "$WANTS_EMULATION" ] && [ "$COMPOSE_ACTION" = "up" ]; then
 
   readonly COMPOSE_VERSION
 
-  if [ "${COMPOSE_VERSION%%.*}" -ge 2 ]; then
+  if [[ "$COMPOSE_VERSION" =~ ^v?2.* ]]; then
     echo "  detected docker-compose $COMPOSE_VERSION, pre-building images"
     $DOCKER_COMPOSE $COMPOSE_ARGS build
   fi
