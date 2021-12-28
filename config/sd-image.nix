@@ -1,7 +1,9 @@
 { lib, pkgs, ... }:
 let
+  env_vars = import ../vars.nix;
+
   configRepo = builtins.fetchGit {
-    url = "https://Chris2011:$GITHUB_TOKEN@$NIX_CONFIG_REPO";
+    url = env_vars.url;
     ref = "master";
   };
 in
