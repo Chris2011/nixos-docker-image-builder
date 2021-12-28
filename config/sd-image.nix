@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 let
   configRepo = builtins.fetchGit {
-    url = "https://Chris2011:${{ secrets.GITHUB_TOKEN }}@${{ github.NIX_CONFIG_REPO }}";
+    url = "https://Chris2011:${GITHUB_TOKEN}@${NIX_CONFIG_REPO}";
     ref = "master";
   };
 in

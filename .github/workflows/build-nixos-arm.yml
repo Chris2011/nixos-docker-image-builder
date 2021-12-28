@@ -26,6 +26,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run the bash script to create the image
         run: ./run.sh
+        env:
+          NIX_CONFIG_REPO: ${{ github.NIX_CONFIG_REPO }}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN }}
 
       # Runs a set of commands using the runners shell
       # - name: Run a multi-line script
