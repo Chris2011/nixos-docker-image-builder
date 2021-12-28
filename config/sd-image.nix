@@ -1,6 +1,9 @@
 { lib, pkgs, ... }:
 let
-  myPackage = pkgs.callPackage ./echo.nix {};
+  configRepo = builtins.fetchGit {
+    url = "https://Chris2011:${{ secrets.GITHUB_TOKEN }}@${{ github.NIX_CONFIG_REPO }}";
+    ref = "master";
+  };
 in
  {
   imports = [
@@ -8,11 +11,7 @@ in
     # ./generic-aarch64 # (note: this is the same as 'rpi3')
     # ./rpi4
     ./rpi3
-    # ./piguard/configuration.nix
-  ];
-
-  environment.systemPackages = with pkgs; [
-    myPackage
+    "${configRepo}/nix-configs/piguard/piguard.nix"
   ];
 
   # The installer starts with a "nixos" user to allow installation, so add the SSH key to

@@ -47,4 +47,4 @@ services:
                        chmod u+w result/sd-image/* && sudo cp result/sd-image/* /build"]
     volumes:
     - ../..:/build
-#    - ../../nix-store:/nix/store TODO: Martin, geht nicht.
+#    - ../../nix-store:/nix/store

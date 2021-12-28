@@ -8,6 +8,8 @@ echo "setting up nix..."
 curl -L https://nixos.org/nix/install | sh -s --no-daemon
 . /home/nixos/.nix-profile/etc/profile.d/nix.sh
 
+nix-channel --update
+
 # .profile loading does not seem to work with alpine, so we have to compromise.
 # 1. load Nix
 echo '. /home/nixos/.nix-profile/etc/profile.d/nix.sh' >> setup-env

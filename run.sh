@@ -47,13 +47,13 @@ readonly COMPOSE_ACTION="${1-up}"
 echo "(1) Build NixOS for ARM/RaspberryPi";
 echo "(2) Build NixOS for PC";
 
-read -p "Input Selection:" mainmenuinput;
+# read -p "Input Selection:" mainmenuinput;
 
-if [ "$mainmenuinput" = "1" ]; then
+# if [ "$mainmenuinput" = "1" ]; then
   buildForArm
-elif [ "$mainmenuinput" = "2" ]; then
-  buildForPc
-fi
+# elif [ "$mainmenuinput" = "2" ]; then
+  # buildForPc
+# fi
 
 # determine whether to use `sudo` or not
 # thanks to masnagam/sbc-scripts for inspiration
