@@ -25,8 +25,11 @@ jobs:
       
       - uses: uraimo/run-on-arch-action@v1.0.8
         with:
-          architecture: aarch64
-          distribution: fedora_latest
+          arch: aarch64
+          distro: fedora_latest
+          run: |
+            uname -a
+            echo ::set-output name=uname::$(uname -a)
 
       # Runs a single command using the runners shell
       - name: Run the bash script to create the image
