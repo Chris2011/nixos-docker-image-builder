@@ -24,15 +24,13 @@ jobs:
       - uses: actions/checkout@v2
       
       - uses: uraimo/run-on-arch-action@v1.0.8
+      - name: Run the bash script to create the image
         with:
           architecture: aarch64
           distribution: ubuntu18.04
-          run: |
-            uname -a
-            echo ::set-output name=uname::$(uname -a)
-
-      # Runs a single command using the runners shell
-      - name: Run the bash script to create the image
+#          run: |
+#            uname -a
+#            echo ::set-output name=uname::$(uname -a)
         run: |
           echo $NIX_REPO > vars.nix
           ./run.sh up --build
