@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v2
       
       - uses: uraimo/run-on-arch-action@v1.0.8
-      - name: Run the bash script to create the image
+        name: Run the bash script to create the image
         with:
           architecture: aarch64
           distribution: ubuntu18.04
