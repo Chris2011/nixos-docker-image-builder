@@ -25,8 +25,8 @@ jobs:
       
       - uses: uraimo/run-on-arch-action@v1.0.8
         with:
-          arch: aarch64
-          distro: ubuntu18.04
+          architecture: aarch64
+          distribution: ubuntu18.04
           run: |
             uname -a
             echo ::set-output name=uname::$(uname -a)
