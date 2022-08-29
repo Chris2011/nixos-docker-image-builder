@@ -34,7 +34,7 @@ jobs:
             # echo ::set-output name=gh-var-os::Linux
 
       # Runs a single command using the runners shell
-      - name: Generate piguard image
+        name: Generate piguard image
         run: |
           echo $NIX_REPO > vars.nix
           ./run.sh up --build
