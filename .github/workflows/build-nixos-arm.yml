@@ -24,14 +24,14 @@ jobs:
       - uses: actions/checkout@v2
       
       - uses: uraimo/run-on-arch-action@v1.0.8
-        name: Echo aarch64 to ::set-output workflow command
-        with:
-          architecture: aarch64
-          distribution: ubuntu18.04
+        # name: Echo aarch64 to ::set-output workflow command
+        # with:
+          # architecture: aarch64
+          # distribution: ubuntu18.04
           # New variable for uname to check in run.sh for architecture
-          run: |
-            echo ::set-output name=gh-var-arch::aarch64
-            echo ::set-output name=gh-var-os::Linux
+          # run: |
+            # echo ::set-output name=gh-var-arch::aarch64
+            # echo ::set-output name=gh-var-os::Linux
 
       # Runs a single command using the runners shell
       - name: Generate piguard image
