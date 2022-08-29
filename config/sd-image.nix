@@ -16,6 +16,10 @@ in
     "${configRepo}/nix-configs/piguard/piguard.nix"
   ];
 
+  environment.etc = {
+    "nixos/configuration.nix".source = "${configRepo}/nix-configs/piguard/piguard.nix";
+  };
+
   # The installer starts with a "nixos" user to allow installation, so add the SSH key to
   # that user. Note that the key is, at the time of writing, put in `/etc/ssh/authorized_keys.d`
   # users.extraUsers.nixos.openssh.authorizedKeys.keys = [
@@ -33,8 +37,6 @@ in
 
   # Enable OpenSSH out of the box.
   services.sshd.enable = true;
-
-  installer.cloneConfig = true;
 
   # Wireless networking (1). You might want to enable this if your Pi is not attached via Ethernet.
   #networking.wireless = {

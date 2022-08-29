@@ -45,6 +45,10 @@ services:
                        -I nixos-config=/build/config/sd-image.nix \
                        nixpkgs/nixos/default.nix && \
                        chmod u+w result/sd-image/* && sudo cp result/sd-image/* /build"]
+
     volumes:
-    - ../..:/build
-#    - ../../nix-store:/nix/store
+      - ../..:/build
+      - nixcache:/nix/store
+    
+volumes:
+  nixcache:
