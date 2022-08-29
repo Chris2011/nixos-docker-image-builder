@@ -26,20 +26,18 @@ jobs:
       - uses: uraimo/run-on-arch-action@v1.0.8
         name: Echo aarch64 to ::set-output workflow command
         with:
-           architecture: aarch64
-           distribution: ubuntu18.04
+          architecture: aarch64
+          distribution: ubuntu18.04
           # New variable for uname to check in run.sh for architecture
-           run: |
-             echo $NIX_REPO > vars.nix
-             ./run.sh up --build
-             # echo ::set-output name=gh-var-arch::aarch64
-             # echo ::set-output name=gh-var-os::Linux
+          run: |
+            # uname -a
+            echo ::set-output name=unameaaaaa::$(uname -a)
 
       # Runs a single command using the runners shell
-      # name: Generate piguard image
-        # run: |
-          # echo $NIX_REPO > vars.nix
-          # ./run.sh up --build
+      - name: Generate piguard image
+        run: |
+          echo $NIX_REPO > vars.nix
+          ./run.sh up --build
         env:
           NIX_REPO: '{ url = "https://Chris2011:${{ secrets.NIX_REPO_ACCESS_TOKEN }}@${{ secrets.NIX_CONFIG_REPO }}/"; }'
           
