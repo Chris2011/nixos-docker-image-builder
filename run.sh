@@ -13,7 +13,8 @@ buildForArm() {
   # Whether to evaluate `docker-compose.emulation.yml`.
   WANTS_EMULATION=
 
-  case "$(uname -m)" in
+  # case "$(uname -m)" in
+  case "$(gh-var-arch)" in
     arm|armel|armhf|arm64|armv[4-9]*l|aarch64)
     # This will use images prefixed with `arm64v8/`, which run natively.
     export IMAGE_BASE=arm64v8/
@@ -57,7 +58,8 @@ echo "(2) Build NixOS for PC";
 
 # determine whether to use `sudo` or not
 # thanks to masnagam/sbc-scripts for inspiration
-if [ "$(uname)" != Linux ] || [ "$(id -u)" -eq 0 ] || id -nG | grep -q docker; then
+# if [ "$(uname)" != Linux ] || [ "$(id -u)" -eq 0 ] || id -nG | grep -q docker; then
+if [ "$(gh-var-os)" != Linux ] || [ "$(id -u)" -eq 0 ] || id -nG | grep -q docker; then
   readonly DOCKER_COMPOSE="docker-compose"
 else
   if command -v "sudo" >/dev/null 2>&1; then
