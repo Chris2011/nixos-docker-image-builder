@@ -29,6 +29,7 @@ jobs:
           architecture: aarch64
           distribution: alpine_latest
           run: |
+            apk update
             apk add docker-compose
             echo $NIX_REPO > vars.nix
             ./run.sh up --build
