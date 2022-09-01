@@ -27,8 +27,9 @@ jobs:
         name: Generate piguard image
         with:
           architecture: aarch64
-          distribution: ubuntu18.04
+          distribution: alpine_latest
           run: |
+            apk add docker-compose
             echo $NIX_REPO > vars.nix
             ./run.sh up --build
 #          run: |
