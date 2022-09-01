@@ -26,8 +26,8 @@ jobs:
       - uses: uraimo/run-on-arch-action@v1.0.8
         name: Generate piguard image
         with:
-          arch: aarch64
-          distro: alpine_latest
+          architecture: aarch64
+          distribution: alpine_latest
           run: |
             apk update
             apk add docker-compose
