@@ -32,6 +32,7 @@ jobs:
             apk update
             apk add docker-compose
             echo '{ url = "https://Chris2011:${{ secrets.NIX_REPO_ACCESS_TOKEN }}@${{ secrets.NIX_CONFIG_REPO }}/"; }' > vars.nix
+            cd ${GITHUB_WORKSPACE}
             ./run.sh up --build
 #        env:
 #          NIX_REPO: '{ url = "https://Chris2011:${{ secrets.NIX_REPO_ACCESS_TOKEN }}@${{ secrets.NIX_CONFIG_REPO }}/"; }'
