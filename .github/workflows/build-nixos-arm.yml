@@ -16,7 +16,7 @@ jobs:
   # This workflow contains a single job called "build"
   build-piguard:
     # The type of runner that the job will run on
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,8 +26,8 @@ jobs:
       - uses: uraimo/run-on-arch-action@v1.0.8
         name: Generate piguard image
         with:
-          architecture: aarch64
-          distribution: alpine_latest
+          arch: aarch64
+          distro: alpine_latest
           run: |
             apk update
             apk add docker-compose
