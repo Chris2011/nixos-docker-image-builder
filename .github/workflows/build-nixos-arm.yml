@@ -45,32 +45,32 @@ jobs:
         env:
           NIX_REPO: '{ url = "https://Chris2011:${{ secrets.NIX_REPO_ACCESS_TOKEN }}@${{ secrets.NIX_CONFIG_REPO }}/"; }'
           
-  build-octoprint:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-18.04
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      
-      - uses: uraimo/run-on-arch-action@v1.0.8
-        name: Set uname to output
-        with:
-          architecture: aarch64
-          distribution: ubuntu18.04
-          # New variable for uname to check in run.sh for architecture
-          run: |
-            # uname -m
-            echo ::set-output name=uname::$(uname -m)
-
-      # Runs a single command using the runners shell
-      - name: Generate piguard image
-        run: |
-          echo $NIX_REPO > vars.nix
-          ./run.sh up --build
-        env:
-          NIX_REPO: '{ url = "https://Chris2011:${{ secrets.NIX_REPO_ACCESS_TOKEN }}@${{ secrets.NIX_CONFIG_REPO }}/"; }'
+#  build-octoprint:
+#    # The type of runner that the job will run on
+#    runs-on: ubuntu-18.04
+#
+#    # Steps represent a sequence of tasks that will be executed as part of the job
+#    steps:
+#      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+#      - uses: actions/checkout@v2
+#      
+#      - uses: uraimo/run-on-arch-action@v1.0.8
+#        name: Set uname to output
+#        with:
+#          architecture: aarch64
+#          distribution: ubuntu18.04
+#          # New variable for uname to check in run.sh for architecture
+#          run: |
+#            # uname -m
+#            echo ::set-output name=uname::$(uname -m)
+#
+#      # Runs a single command using the runners shell
+#      - name: Generate piguard image
+#        run: |
+#          echo $NIX_REPO > vars.nix
+#          ./run.sh up --build
+#        env:
+#          NIX_REPO: '{ url = "https://Chris2011:${{ secrets.NIX_REPO_ACCESS_TOKEN }}@${{ secrets.NIX_CONFIG_REPO }}/"; }'
 
       # Runs a set of commands using the runners shell
       # - name: Run a multi-line script
