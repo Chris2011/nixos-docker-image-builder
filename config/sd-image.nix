@@ -10,7 +10,7 @@ in
  {
   imports = [
     ## Uncomment at most one of the following to select the target system:
-    # ./generic-aarch64 # (note: this is the same as 'rpi3')
+    # ./generic-aarch64 # (note: this is the same as 'rpi3' and 'rpi4')
     # ./rpi4
     ./generic-aarch64
     "${configRepo}/nix-configs/piguard/piguard.nix"
