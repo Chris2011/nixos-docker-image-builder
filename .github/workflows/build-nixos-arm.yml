@@ -22,9 +22,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+        
+      - name: Create download folder
+        run: mkdir downloads
       
-      - uses: uraimo/run-on-arch-action@v2.2.1
-        name: Generate piguard image
+      - name: Generate piguard image
+        uses: uraimo/run-on-arch-action@v2.3.0
         with:
           arch: aarch64
           distro: alpine_latest
