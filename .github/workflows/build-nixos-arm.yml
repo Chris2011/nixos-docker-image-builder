@@ -31,9 +31,9 @@ jobs:
 #        with:
 #          arch: aarch64
 #          distro: alpine_latest
+#          apk update
+#          apk add docker docker-compose
         run: |
-          apk update
-          apk add docker docker-compose
           echo '{ url = "https://Chris2011:${{ secrets.NIX_REPO_ACCESS_TOKEN }}@${{ secrets.NIX_CONFIG_REPO }}/"; }' > vars.nix
           sh ${GITHUB_WORKSPACE}/run.sh up --build
 #        env:
@@ -62,9 +62,9 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Generate octoprint image
+#            apk update
+#            apk add docker docker-compose
         run: |
-            apk update
-            apk add docker docker-compose
             echo '{ url = "https://Chris2011:${{ secrets.NIX_REPO_ACCESS_TOKEN }}@${{ secrets.NIX_CONFIG_REPO }}/"; }' > vars.nix
             sh ${GITHUB_WORKSPACE}/run.sh up --build
 #        env:
