@@ -13,11 +13,11 @@ in
     # ./generic-aarch64 # (note: this is the same as 'rpi3' and 'rpi4')
     # ./rpi4
     ./generic-aarch64
-    "${configRepo}/nix-configs/piguard/piguard.nix"
+    "${configRepo}/nix-configs/machines/${env_vars.machineName}/${env_vars.machineName}.nix"
   ];
 
   environment.etc = {
-    "nixos/configuration.nix".source = "${configRepo}/nix-configs/piguard/piguard.nix";
+    "nixos/configuration.nix".source = "${configRepo}/nix-configs/machines/${env_vars.machineName}/${env_vars.machineName}.nix";
   };
 
   # The installer starts with a "nixos" user to allow installation, so add the SSH key to
