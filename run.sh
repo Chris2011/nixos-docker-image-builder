@@ -1,19 +1,37 @@
 #!/bin/bash
 
 echo "Check for installed git"
-apt list --installed | grep git > /dev/null
+# for ubuntu
+# apt list --installed | grep git > /dev/null
+
+# for alpine
+apk update > /dev/null
+apk invo -vv | grep git > /dev/null
 
 if [ $? -eq 1 ]; then
-    apt install git
+    # for ubuntu
+    # apt install git
+
+    # for alpine
+    apk add git
 else
     echo "Git already installed"
 fi
 
 echo "Check for installed podman"
-apt list --installed | grep -i podman > /dev/null
+# for ubuntu
+# apt install git
+# apt list --installed | grep -i podman > /dev/null
+
+# for alpine
+apk info -vv | grep -i podman > /dev/null
 
 if [ $? -eq 1 ]; then
-    apt -y install podman
+    # for ubuntu
+    # apt -y install podman
+
+    # for alpine
+    apk add podman
 else
     echo "Podman already installed"
 fi
