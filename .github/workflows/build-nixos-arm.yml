@@ -67,7 +67,7 @@ jobs:
 #          apk update
 #          apk add docker docker-compose
           run: |
-              # echo '{ url = "https://Chris2011:${{ secrets.NIX_REPO_ACCESS_TOKEN }}@${{ secrets.NIX_CONFIG_REPO }}/"; machineName = "octoprint"; }' > vars.nix
+              echo url="https://Chris2011:${{ secrets.NIX_REPO_ACCESS_TOKEN }}@${{ secrets.NIX_CONFIG_REPO }}/" > vars.sh
               sh ${GITHUB_WORKSPACE}/run.sh up --build
 
       # Runs a set of commands using the runners shell

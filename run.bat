@@ -1,3 +1,7 @@
+REM install WSL
+REM say yes to all
+REM podman machine init and podman machine start
+
 @echo off
 
 echo "Check for installed git"

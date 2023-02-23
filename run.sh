@@ -1,12 +1,14 @@
 #!/bin/bash
 
+. vars.sh
+
 echo "Check for installed git"
 # for ubuntu
 # apt list --installed | grep git > /dev/null
 
 # for alpine
 apk update > /dev/null
-apk invo -vv | grep git > /dev/null
+apk info -vv | grep git > /dev/null
 
 if [ $? -eq 1 ]; then
     # for ubuntu
@@ -39,7 +41,7 @@ fi
 # git clone nix-config repo
 ls | grep -i nix-configurations > /dev/null
 if [ $? -eq 1 ]; then
-    git clone https://github.com/Chris2011/nix-configurations.git
+    git clone $url
 else
     cd nix-configurations && git pull && cd ..
 fi
