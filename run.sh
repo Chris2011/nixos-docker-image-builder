@@ -1,10 +1,10 @@
 #!/bin/bash
 
-source vars.sh
+. vars.sh
 
 echo "Check for installed git"
 # for debian or ubuntu
-apt list --installed | grep git > /dev/null
+apt-get list --installed | grep git > /dev/null
 
 # for alpine
 # apk update > /dev/null
@@ -12,7 +12,7 @@ apt list --installed | grep git > /dev/null
 
 if [ $? -eq 1 ]; then
     # for debian or ubuntu
-    apt install git
+    apt-get install git
 
     # for alpine
     # apk add git
@@ -22,15 +22,15 @@ fi
 
 echo "Check for installed podman"
 # for debian or ubuntu
-apt install git
-apt list --installed | grep -i podman > /dev/null
+apt-get install git
+apt-get list --installed | grep -i podman > /dev/null
 
 # for alpine
 # apk info -vv | grep -i podman > /dev/null
 
 if [ $? -eq 1 ]; then
     # for debian or ubuntu
-    apt -y install podman
+    apt-get -y install podman
 
     # for alpine
     # apk add podman
