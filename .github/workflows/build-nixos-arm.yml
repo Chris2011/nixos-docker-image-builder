@@ -63,7 +63,7 @@ jobs:
         uses: uraimo/run-on-arch-action@v2.5.0
         with:
           arch: aarch64
-          distro: bullseye
+          distro: ubuntu_latest
 #          apk update
 #          apk add docker docker-compose
           run: |
