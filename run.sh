@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. vars.sh
+source vars.sh
 
 echo "Check for installed git"
 # for debian or ubuntu
