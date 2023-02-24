@@ -46,4 +46,4 @@ else
     cd nix-configurations && git pull && cd ..
 fi
 
-podman build --arch=arm64 --build-arg output_format=sd-aarch64 -f Dockerfile ./nix-configurations
+podman build --arch arm64 --build-arg output_format=sd-aarch64 -f Dockerfile ./nix-configurations
