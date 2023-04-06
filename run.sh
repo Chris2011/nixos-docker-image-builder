@@ -22,17 +22,19 @@ else
     echo "Git already installed"
 fi
 
-echo "Check for installed podman"
-podman --version > /dev/null || EXIT_CODE=$?
+echo "Check for installed podman/docker"
+# podman --version > /dev/null || EXIT_CODE=$?
+docker --version > /dev/null || EXIT_CODE=$?
 
 if [ $EXIT_CODE -ne 0 ]; then
     # for debian or ubuntu
-    apt -y install podman
+    # apt -y install podman
+    apt -y install docker
 
     # for alpine
     # apk add podman
 else
-    echo "Podman already installed"
+    echo "Podman/Docker already installed"
 fi
 
 # git clone nix-config repo
@@ -44,4 +46,4 @@ else
 fi
 
 # podman build --arch arm64 --build-arg output_format=sd-aarch64 -f Dockerfile ${GITHUB_WORKSPACE}/nix-configurations
-podman build --arch arm64 --build-arg output_format=sd-aarch64 -f Dockerfile ${GITHUB_WORKSPACE}/nix-configurations
+docker build --build-arg output_format=sd-aarch64 -f Dockerfile ${GITHUB_WORKSPACE}/nix-configurations

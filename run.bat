@@ -18,4 +18,4 @@ REM git clone nix-config repo
 dir | findstr /i nix-configurations > nul
 if %errorlevel% == 1 (git clone https://github.com/Chris2011/nix-configurations.git) else (cd nix-configurations && git pull && cd ..)
 
-podman build --build-arg output_format=sd-aarch64 -f Dockerfile ./nix-configurations
+podman build --arch arm64 --build-arg output_format=sd-aarch64 -f Dockerfile ./nix-configurations
