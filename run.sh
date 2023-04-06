@@ -12,7 +12,7 @@ git --version > /dev/null || EXIT_CODE=$?
 if [ $EXIT_CODE -ne 0 ]; then
     # for debian or ubuntu
     apt update
-    apt install git
+    apt -y install git
 
     # for alpine
     # apk add git
