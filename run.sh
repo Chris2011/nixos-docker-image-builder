@@ -2,13 +2,12 @@
 # https://www.shellcheck.net/
 set -e
 
-cat ${GITHUB_WORKSPACE}/vars.sh
 . ${GITHUB_WORKSPACE}/vars.sh
 
 echo "Check for installed git"
-git --version > /dev/null
+git --version > /dev/null || true
 
-if [ $? -eq 1 ]; then
+if [ $? -ne 0 ]; then
     # for debian or ubuntu
     apt update
     apt install git
@@ -20,9 +19,9 @@ else
 fi
 
 echo "Check for installed podman"
-podman --version > /dev/null
+podman --version > /dev/null || true
 
-if [ $? -eq 1 ]; then
+if [ $? -ne 0 ]; then
     # for debian or ubuntu
     apt -y install podman
 
@@ -34,7 +33,7 @@ fi
 
 # git clone nix-config repo
 ls ~/*nix-configurations* > /dev/null
-if [ $? -eq 1 ]; then
+if [ $? -ne 0 ]; then
     git clone "$url" > /dev/null
 else
     cd nix-configurations && git pull && cd ..
