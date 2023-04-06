@@ -1,6 +1,7 @@
 #!/bin/bash
 # https://www.shellcheck.net/
 set -e
+
 . vars.sh
 
 echo "Check for installed git"
