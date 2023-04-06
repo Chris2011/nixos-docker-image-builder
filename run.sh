@@ -29,7 +29,7 @@ docker --version > /dev/null || EXIT_CODE=$?
 if [ $EXIT_CODE -ne 0 ]; then
     # for debian or ubuntu
     # apt -y install podman
-    apt -y install docker
+    apt -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
     # for alpine
     # apk add podman
