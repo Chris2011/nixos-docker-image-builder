@@ -2,6 +2,8 @@
 # https://www.shellcheck.net/
 set -e
 
+cat /proc/cpuinfo
+
 EXIT_CODE=0
 
 . "${GITHUB_WORKSPACE}/vars.sh"
@@ -41,4 +43,5 @@ else
     cd nix-configurations && git pull && cd ..
 fi
 
+# podman build --arch arm64 --build-arg output_format=sd-aarch64 -f Dockerfile ${GITHUB_WORKSPACE}/nix-configurations
 podman build --arch arm64 --build-arg output_format=sd-aarch64 -f Dockerfile ${GITHUB_WORKSPACE}/nix-configurations
