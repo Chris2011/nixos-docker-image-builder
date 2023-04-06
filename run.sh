@@ -2,7 +2,8 @@
 # https://www.shellcheck.net/
 set -e
 
-. vars.sh
+cat ${GITHUB_WORKSPACE}/vars.sh
+. ${GITHUB_WORKSPACE}/vars.sh
 
 echo "Check for installed git"
 git --version > /dev/null
@@ -34,7 +35,7 @@ fi
 # git clone nix-config repo
 ls ~/*nix-configurations* > /dev/null
 if [ $? -eq 1 ]; then
-    git clone "$url"
+    git clone "$url" > /dev/null
 else
     cd nix-configurations && git pull && cd ..
 fi
