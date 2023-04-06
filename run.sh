@@ -34,11 +34,11 @@ else
 fi
 
 # git clone nix-config repo
-ls ~/*nix-configurations* > /dev/null || EXIT_CODE=$?
+ls ${GITHUB_WORKSPACE}/*nix-configurations* > /dev/null || EXIT_CODE=$?
 if [ $EXIT_CODE -ne 0 ]; then
     git clone "$url" > /dev/null
 else
     cd nix-configurations && git pull && cd ..
 fi
 
-podman build --arch arm64 --build-arg output_format=sd-aarch64 -f Dockerfile ./nix-configurations
+podman build --arch arm64 --build-arg output_format=sd-aarch64 -f Dockerfile ${GITHUB_WORKSPACE}/nix-configurations
