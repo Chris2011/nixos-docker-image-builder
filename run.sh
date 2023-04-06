@@ -1,6 +1,7 @@
 #!/bin/bash
+# https://www.shellcheck.net/
 set -e
-source vars.sh
+. vars.sh
 
 echo "Check for installed git"
 git --version > /dev/null
