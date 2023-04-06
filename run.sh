@@ -1,14 +1,9 @@
 #!/bin/bash
-
+set -e
 source vars.sh
 
 echo "Check for installed git"
-# for debian or ubuntu
-apt list --installed | grep git > /dev/null
-
-# for alpine
-# apk update > /dev/null
-# apk info -vv | grep git > /dev/null
+git --version > /dev/null
 
 if [ $? -eq 1 ]; then
     # for debian or ubuntu
@@ -22,12 +17,7 @@ else
 fi
 
 echo "Check for installed podman"
-# for debian or ubuntu
-apt update
-apt list --installed | grep -i podman > /dev/null
-
-# for alpine
-# apk info -vv | grep -i podman > /dev/null
+podman --version > /dev/null
 
 if [ $? -eq 1 ]; then
     # for debian or ubuntu
@@ -40,9 +30,9 @@ else
 fi
 
 # git clone nix-config repo
-ls | grep -i nix-configurations > /dev/null
+ls ~/*nix-configurations* > /dev/null
 if [ $? -eq 1 ]; then
-    git clone $url
+    git clone "$url"
 else
     cd nix-configurations && git pull && cd ..
 fi
