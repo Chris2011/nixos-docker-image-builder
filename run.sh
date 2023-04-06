@@ -2,12 +2,14 @@
 # https://www.shellcheck.net/
 set -e
 
+EXIT_CODE=0
+
 . ${GITHUB_WORKSPACE}/vars.sh
 
 echo "Check for installed git"
-git --version > /dev/null || true
+git --version > /dev/null || EXIT_CODE=$?
 
-if [ $? -ne 0 ]; then
+if [ $EXIT_CODE -ne 0 ]; then
     # for debian or ubuntu
     apt update
     apt install git
@@ -19,9 +21,9 @@ else
 fi
 
 echo "Check for installed podman"
-podman --version > /dev/null || true
+podman --version > /dev/null || EXIT_CODE=$?
 
-if [ $? -ne 0 ]; then
+if [ $EXIT_CODE -ne 0 ]; then
     # for debian or ubuntu
     apt -y install podman
 
@@ -32,8 +34,8 @@ else
 fi
 
 # git clone nix-config repo
-ls ~/*nix-configurations* > /dev/null
-if [ $? -ne 0 ]; then
+ls ~/*nix-configurations* > /dev/null || EXIT_CODE=$?
+if [ $EXIT_CODE -ne 0 ]; then
     git clone "$url" > /dev/null
 else
     cd nix-configurations && git pull && cd ..
