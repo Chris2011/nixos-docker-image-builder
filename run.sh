@@ -4,7 +4,7 @@ set -e
 
 EXIT_CODE=0
 
-. ${GITHUB_WORKSPACE}/vars.sh
+. "${GITHUB_WORKSPACE}/vars.sh"
 
 echo "Check for installed git"
 git --version > /dev/null || EXIT_CODE=$?
@@ -36,7 +36,7 @@ fi
 # git clone nix-config repo
 ls ${GITHUB_WORKSPACE}/*nix-configurations* > /dev/null || EXIT_CODE=$?
 if [ $EXIT_CODE -ne 0 ]; then
-    git clone "$url" > /dev/null
+    git clone "$url" "${GITHUB_WORKSPACE}/nix-configurations" > /dev/null
 else
     cd nix-configurations && git pull && cd ..
 fi
