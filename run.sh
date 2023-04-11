@@ -37,6 +37,9 @@ else
     echo "Podman/Docker already installed"
 fi
 
+podman machine init --image-path https://github.com/containers/podman-wsl-fedora/releases/download/v36.0.130/rootfs.tar.xz
+podman machine start
+
 # git clone nix-config repo
 ls ${GITHUB_WORKSPACE}/*nix-configurations* > /dev/null || EXIT_CODE=$?
 if [ $EXIT_CODE -ne 0 ]; then

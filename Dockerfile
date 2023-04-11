@@ -1,4 +1,4 @@
-FROM nixos/nix
+FROM docker.io/nixos/nix
 
 ARG output_format
 
