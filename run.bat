@@ -14,6 +14,9 @@ winget list | findstr /i podman > nul
 
 if %errorlevel% == 1 (winget install --id=RedHat.Podman -e) else (echo "Podman already installed")
 
+podman machine init --image-path https://github.com/containers/podman-wsl-fedora/releases/download/v36.0.130/rootfs.tar.xz
+podman machine start
+
 REM git clone nix-config repo
 dir | findstr /i nix-configurations > nul
 if %errorlevel% == 1 (git clone https://github.com/Chris2011/nix-configurations.git) else (cd nix-configurations && git pull && cd ..)
