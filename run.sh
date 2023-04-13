@@ -23,8 +23,7 @@ else
 fi
 
 echo "Check for installed podman/docker"
-# podman --version > /dev/null || EXIT_CODE=$?
-docker --version > /dev/null || EXIT_CODE=$?
+podman --version > /dev/null || EXIT_CODE=$?
 
 if [ $EXIT_CODE -ne 0 ]; then
     # for debian or ubuntu
@@ -47,5 +46,4 @@ else
     cd nix-configurations && git pull && cd ..
 fi
 
-# podman build --arch arm64 --build-arg output_format=sd-aarch64 -f Dockerfile ${GITHUB_WORKSPACE}/nix-configurations
-docker build --build-arg output_format=sd-aarch64 -f Dockerfile ${GITHUB_WORKSPACE}/nix-configurations
+podman build --platform=linux/arm64 --build-arg output_format=sd-aarch64 -f Dockerfile ${GITHUB_WORKSPACE}/nix-configurations
