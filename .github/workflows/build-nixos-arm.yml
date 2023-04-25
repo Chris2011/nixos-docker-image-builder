@@ -59,13 +59,16 @@ jobs:
         run: mkdir downloads
 
       # Runs a single command using the runners shell
-      - name: Generate octoprint image
+      - name: Switch to arm action
         uses: uraimo/run-on-arch-action@v2.5.0
         with:
           arch: aarch64
           distro: ubuntu_latest
-#          apk update
-#          apk add docker docker-compose
+
+        name: Generate octoprint image
+        uses: docker/build-push-action@v4
+        with:
+          push: false
           run: |
               echo url="https://Chris2011:${{ secrets.NIX_REPO_ACCESS_TOKEN }}@${{ secrets.NIX_CONFIG_REPO }}/" > ${GITHUB_WORKSPACE}/vars.sh
               sh ${GITHUB_WORKSPACE}/run.sh up --build

@@ -1,6 +1,8 @@
-FROM docker.io/nixos/nix
+FROM docker.io/nixos/nix:latest-arm64
 
 ARG output_format
+
+RUN echo "filter-syscalls = false" >> /etc/nix/nix.conf
 
 RUN nix-channel --add https://nixos.org/channels/nixos-22.11 nixos
 RUN nix-channel --update
