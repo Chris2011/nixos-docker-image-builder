@@ -20,18 +20,18 @@ else
     echo "Git already installed"
 fi
 
-echo "Check for installed docker"
-docker --version > /dev/null || EXIT_CODE=$?
-
-if [ $EXIT_CODE -ne 0 ]; then
-    # for debian or ubuntu
-    apt -y install docker
-
-    # for alpine
-    # apk add podman
-else
+# echo "Check for installed docker"
+# docker --version > /dev/null || EXIT_CODE=$?
+# 
+# if [ $EXIT_CODE -ne 0 ]; then
+#     # for debian or ubuntu
+#     apt -y install docker
+# 
+#     # for alpine
+#     # apk add podman
+# else
     echo "Docker already installed"
-fi
+#fi
 
 # git clone nix-config repo
 ls ${GITHUB_WORKSPACE}/*nix-configurations* > /dev/null || EXIT_CODE=$?
