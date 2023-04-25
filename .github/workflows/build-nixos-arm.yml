@@ -65,7 +65,7 @@ jobs:
           arch: aarch64
           distro: ubuntu_latest
 
-        name: Generate octoprint image
+      - name: Generate octoprint image
         uses: docker/build-push-action@v4
         with:
           push: false
