@@ -14,6 +14,7 @@ ADD nix-configs/common /common
 
 # format: iso, docker, hyperv, install-iso, sd-aar64, sd-aar64-installer, virtualbox, vmware
 RUN nix-shell -p nixos-generators --command "nixos-generate -f $output_format -c /etc/nixos/configuration.nix -o result"
+RUN nix-shell -p zstd --command "unzstd"
 
 # Dell /common folder
 RUN rm -rf /common

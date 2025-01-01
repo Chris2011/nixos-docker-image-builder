@@ -59,7 +59,7 @@ jobs:
         run: mkdir downloads
 
       # Runs a single command using the runners shell
-      - name: Switch to arm action
+      - name: Switch to arm action and generate octoprint image
         uses: uraimo/run-on-arch-action@v2.5.0
         with:
           arch: aarch64
